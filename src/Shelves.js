@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Route } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
-
-let books = BooksAPI.getAll();
-console.log(books);
+import Book from './Book'
 
 class Shelves extends Component {
 
@@ -20,7 +17,11 @@ class Shelves extends Component {
                     <h2 className="bookshelf-title">Currently Reading</h2>
                     <div className="bookshelf-books">
                     <ol className="books-grid">
-                        <li></li>
+                        {this.props.books.filter.map((book) => (
+                            <li>
+                                <Book />
+                            </li>
+                        ))}
                     </ol>
                     </div>
                 </div>
@@ -28,7 +29,9 @@ class Shelves extends Component {
                     <h2 className="bookshelf-title">Want to Read</h2>
                     <div className="bookshelf-books">
                     <ol className="books-grid">
-                        <li></li>
+                        <li>
+                            <Book />
+                        </li>
                     </ol>
                     </div>
                 </div>
@@ -36,7 +39,9 @@ class Shelves extends Component {
                     <h2 className="bookshelf-title">Read</h2>
                     <div className="bookshelf-books">
                     <ol className="books-grid">
-                        <li></li>
+                        <li>
+                        <Book />
+                        </li>
                     </ol>
                     </div>
                 </div>

@@ -11,15 +11,23 @@ import Shelves from './Shelves'
 
 class BooksApp extends React.Component {
   state = {
-    showSearchPage: false,
-    query: ''
+    shelfBooks: [],
+    query: '',
+    searchBooks: ''
   }
 
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
   }
 
+  componentDidMount(){
+    BooksAPI.getAll().then((shelfBooks) => {
+        this.setState({ shelfBooks })
+    })
+  }
+
   render() {
+
     return (
       <div className="app">
 
@@ -36,9 +44,11 @@ class BooksApp extends React.Component {
         )}/>
 
         <Route exact path='/' render={() => (
-          <Shelves />
+          <Shelves 
+            books={this.state.shelfBooks}
+          />
         )}/>
-        
+
       </div>
     )
   }
