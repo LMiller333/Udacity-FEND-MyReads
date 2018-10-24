@@ -23,7 +23,9 @@ class Shelves extends Component {
                             .map (book => (
                                 <li key={book.id}>
                                     <Book
-                                    book={book} />
+                                        book={book}
+                                        changeShelf={this.props.changeShelf} 
+                                    />
                                 </li>
                             ))
                         }
@@ -40,7 +42,9 @@ class Shelves extends Component {
                             .map (book => (
                                 <li key={book.id}>
                                     <Book
-                                    book={book} />
+                                        book={book}
+                                        changeShelf={this.props.changeShelf} 
+                                    />
                                 </li>
                             ))
                         }
@@ -57,7 +61,9 @@ class Shelves extends Component {
                             .map (book => (
                                 <li key={book.id}>
                                     <Book
-                                    book={book} />
+                                        book={book}
+                                        changeShelf={this.props.changeShelf}
+                                    />
                                 </li>
                             ))
                         }

@@ -20,10 +20,19 @@ class BooksApp extends React.Component {
     this.setState({ query: query.trim() })
   }
 
-  componentDidMount(){
+  getAllShelfBooks = () => {
     BooksAPI.getAll().then((shelfBooks) => {
-        this.setState({ shelfBooks })
-    })
+      this.setState({ shelfBooks })
+     })
+  }
+
+  componentDidMount(){
+    this.getAllShelfBooks();
+  }
+
+  changeShelf = (book,shelf) => {
+    BooksAPI.update(book,shelf);
+    this.getAllShelfBooks();
   }
 
   render() {
@@ -46,6 +55,7 @@ class BooksApp extends React.Component {
         <Route exact path='/' render={() => (
           <Shelves 
             books={this.state.shelfBooks}
+            changeShelf={this.changeShelf}
           />
         )}/>
 
