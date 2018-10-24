@@ -25,6 +25,7 @@ class Shelves extends Component {
                                     <Book
                                         book={book}
                                         changeShelf={this.props.changeShelf} 
+                                        currentShelf="currentlyReading" 
                                     />
                                 </li>
                             ))
@@ -43,7 +44,8 @@ class Shelves extends Component {
                                 <li key={book.id}>
                                     <Book
                                         book={book}
-                                        changeShelf={this.props.changeShelf} 
+                                        changeShelf={this.props.changeShelf}
+                                        currentShelf="wantToRead" 
                                     />
                                 </li>
                             ))
@@ -63,6 +65,7 @@ class Shelves extends Component {
                                     <Book
                                         book={book}
                                         changeShelf={this.props.changeShelf}
+                                        currentShelf="read" 
                                     />
                                 </li>
                             ))
