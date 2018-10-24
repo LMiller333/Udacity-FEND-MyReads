@@ -13,11 +13,15 @@ class BooksApp extends React.Component {
   state = {
     shelfBooks: [],
     query: '',
-    searchBooks: ''
+    searchBooks: []
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() })
+    this.setState({ query: query.trim() });
+    BooksAPI.search(query).then((searchBooks) => {
+      this.setState({searchBooks})
+    })
+    console.log(this.state.searchBooks);
   }
 
   getAllShelfBooks = () => {
@@ -48,7 +52,10 @@ class BooksApp extends React.Component {
                     <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={ (event) => this.updateQuery(event.target.value)}/>
                 </div>
             </div>
-            <SearchResults />
+            <SearchResults
+               books={this.state.searchBooks}
+               changeShelf={this.changeShelf}
+            />
           </div>
         )}/>
 
