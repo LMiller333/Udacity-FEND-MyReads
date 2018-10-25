@@ -17,7 +17,7 @@ class SearchResults extends Component {
                                 <Book
                                     book={book}
                                     changeShelf={this.props.changeShelf}
-                                    currentShelf={book}
+                                    currentShelf={book.shelf?book.shelf:"none"}
                                 />
                             </li>
                         ))
