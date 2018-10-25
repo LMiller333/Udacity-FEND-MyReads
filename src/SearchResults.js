@@ -10,18 +10,28 @@ class SearchResults extends Component {
         return(
             <div className="search-books-results">
                 <ol className="books-grid">
-                    {
-                        this.props.books
-                        .map (book => (
-                            <li key={book.id}>
+                    {this.props.searchBooks.map (searchBook =>
+                        {
+                            searchBook.shelf="none";
+                            
+                            this.props.books.map(book => (
+                                searchBook.id === book.id ?
+                                searchBook.shelf = book.shelf:
+                                ""
+                            ));
+                           
+                            return(
+                                <li key={searchBook.id}>
                                 <Book
-                                    book={book}
+                                    book={searchBook}
                                     changeShelf={this.props.changeShelf}
-                                    currentShelf={book.shelf?book.shelf:"none"}
+                                    currentShelf={searchBook.shelf}
                                 />
-                            </li>
-                        ))
+                                </li>
+                            );  
+                        })
                     }
+                    
                 </ol>
             </div>
         )
