@@ -2,8 +2,6 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import { Link, Route } from 'react-router-dom'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
 import SearchResults from './SearchResults'
 import Shelves from './Shelves'
 
@@ -45,8 +43,9 @@ class BooksApp extends React.Component {
   }
 
   changeShelf = (book,shelf) => {
-    BooksAPI.update(book,shelf);
-    this.getAllShelfBooks();
+    BooksAPI.update(book,shelf).then(() => {
+      this.getAllShelfBooks();
+    })
   }
 
   render() {
