@@ -1,7 +1,7 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import { Link, Route } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
 import SearchResults from './SearchResults'
 import Shelves from './Shelves'
 
@@ -53,6 +53,8 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
 
+      <Switch>
+
         <Route exact path='/search' render={() => (
           <div className="search-books">
             <div className="search-books-bar">
@@ -76,6 +78,13 @@ class BooksApp extends React.Component {
             changeShelf={this.changeShelf}
           />
         )}/>
+
+        <Route render={(location) => (
+          <div>
+          <h3>The page <code>{location.pathname}</code>does not exist. Try again!</h3>
+          </div>
+        )} />
+      </Switch>
 
       </div>
     )
